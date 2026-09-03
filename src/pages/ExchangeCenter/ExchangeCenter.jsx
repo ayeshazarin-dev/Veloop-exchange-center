@@ -49,82 +49,6 @@ export default function ExchangeCenter() {
 
   // GSAP Refs
   const pageRef = useRef(null);
-  const heroRef = useRef(null);
-  const balanceRef = useRef(null);
-  const calcRef = useRef(null);
-  const conversionsRef = useRef(null);
-  const howRef = useRef(null);
-  const historyRef = useRef(null);
-  const rulesRef = useRef(null);
-  const footerRef = useRef(null);
-
-  // GSAP ScrollTrigger Stack & Entrance Animations
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      // Hero entrance
-      gsap.fromTo(
-        heroRef.current,
-        { opacity: 0, y: 30, scale: 0.98 },
-        { opacity: 1, y: 0, scale: 1, duration: 0.8, ease: "power2.out" }
-      );
-
-      // Section animations
-      const sections = [
-        balanceRef.current,
-        calcRef.current,
-        conversionsRef.current,
-        howRef.current,
-        historyRef.current,
-        rulesRef.current,
-        footerRef.current,
-      ];
-
-      sections.forEach((section) => {
-        if (!section) return;
-
-        gsap.fromTo(
-          section,
-          { opacity: 0, y: 35 },
-          {
-            scrollTrigger: {
-              trigger: section,
-              start: "top 88%",
-              toggleActions: "play none none none",
-            },
-            opacity: 1,
-            y: 0,
-            duration: 0.7,
-            ease: "power2.out",
-          }
-        );
-      });
-
-      // Parallax glow orbs
-      gsap.to(".backgroundGlowOne", {
-        scrollTrigger: {
-          trigger: pageRef.current,
-          start: "top top",
-          end: "bottom bottom",
-          scrub: 1.5,
-        },
-        y: 200,
-        ease: "none",
-      });
-
-      gsap.to(".backgroundGlowTwo", {
-        scrollTrigger: {
-          trigger: pageRef.current,
-          start: "top top",
-          end: "bottom bottom",
-          scrub: 1.5,
-        },
-        y: -150,
-        ease: "none",
-      });
-    }, pageRef);
-
-    return () => ctx.revert();
-  }, [displayedOptions]);
 
   const handleConvertClick = (option) => {
     if (balance.gems < option.requiredGems) return;
@@ -177,12 +101,12 @@ export default function ExchangeCenter() {
         <Navbar balance={balance} />
 
         {/* 1. Hero Header */}
-        <div ref={heroRef}>
+        <div>
           <ExchangeHero />
         </div>
 
         {/* 2. User Balance Overview */}
-        <div ref={balanceRef} className={styles.gsapSection}>
+        <div className={styles.gsapSection}>
           <BalanceOverview
             balance={balance}
             totalConversions={totalConversions}
@@ -191,12 +115,12 @@ export default function ExchangeCenter() {
         </div>
 
         {/* 3. Interactive Yield Simulator / Calculator */}
-        <div ref={calcRef} className={styles.gsapSection}>
+        <div className={styles.gsapSection}>
           <YieldCalculator balance={balance} onSelectAmount={(gems) => {}} />
         </div>
 
         {/* 4. Available Conversions Section with Category Filter Tabs */}
-        <div ref={conversionsRef} className={styles.gsapSection}>
+        <div className={styles.gsapSection}>
           <section className={styles.conversionsSection}>
             <div className={styles.sectionHeading}>
               <div>
@@ -285,22 +209,22 @@ export default function ExchangeCenter() {
         </div>
 
         {/* 5. How Exchange Works (5 Steps Walkthrough) */}
-        <div ref={howRef} className={styles.gsapSection}>
+        <div className={styles.gsapSection}>
           <HowExchangeWorks />
         </div>
 
         {/* 6. Recent Conversions Activity */}
-        <div ref={historyRef} className={styles.gsapSection}>
+        <div className={styles.gsapSection}>
           <ExchangeHistory history={history} />
         </div>
 
         {/* 7. Platform Exchange Rules */}
-        <div ref={rulesRef} className={styles.gsapSection}>
+        <div className={styles.gsapSection}>
           <ExchangeRules />
         </div>
 
         {/* 8. Footer */}
-        <div ref={footerRef} className={styles.gsapSection}>
+        <div className={styles.gsapSection}>
           <footer className={styles.footer}>
             <div className={styles.footerBottom}>
               <p>© 2025-2026 VELOOP Rewards · All rights reserved</p>
