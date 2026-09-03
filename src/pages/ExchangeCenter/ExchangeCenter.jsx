@@ -74,60 +74,56 @@ export default function ExchangeCenter() {
         "-=0.3"
       );
 
-      // 2. ScrollTrigger Reveal for Lower Sections
+      // 2. ScrollTrigger Reveal for Every Section on Every Scroll (Up & Down)
       const revealSections = document.querySelectorAll(`.${styles.gsapSection}`);
       revealSections.forEach((sec) => {
         gsap.fromTo(
           sec,
-          { y: 35, opacity: 0 },
+          { y: 40, opacity: 0, scale: 0.98 },
           {
             scrollTrigger: {
               trigger: sec,
-              start: "top 88%",
-              toggleActions: "play none none none",
-              once: true,
+              start: "top 90%",
+              end: "bottom 15%",
+              toggleActions: "play reverse play reverse",
             },
             y: 0,
             opacity: 1,
+            scale: 1,
             duration: 0.7,
             ease: "power2.out",
           }
         );
       });
 
-      // 3. Stagger Exchange Cards
+      // 3. Stagger Exchange Cards on Every Scroll
       ScrollTrigger.create({
         trigger: `.${styles.exchangeGrid}`,
-        start: "top 85%",
-        once: true,
+        start: "top 88%",
+        end: "bottom 10%",
+        toggleActions: "play reverse play reverse",
         onEnter: () => {
           gsap.fromTo(
             `.${styles.exchangeCard}`,
-            { y: 30, opacity: 0, scale: 0.95 },
+            { y: 35, opacity: 0, scale: 0.94 },
             {
               y: 0,
               opacity: 1,
               scale: 1,
-              stagger: 0.1,
+              stagger: 0.12,
               duration: 0.6,
               ease: "back.out(1.3)",
             }
           );
         },
-      });
-
-      // 4. Stagger Step Cards in How Exchange Works
-      ScrollTrigger.create({
-        trigger: `.${styles.howCardsRow}`,
-        start: "top 85%",
-        once: true,
-        onEnter: () => {
+        onEnterBack: () => {
           gsap.fromTo(
-            `.${styles.howCard}`,
-            { y: 25, opacity: 0 },
+            `.${styles.exchangeCard}`,
+            { y: -25, opacity: 0, scale: 0.96 },
             {
               y: 0,
               opacity: 1,
+              scale: 1,
               stagger: 0.08,
               duration: 0.5,
               ease: "power2.out",
@@ -136,15 +132,72 @@ export default function ExchangeCenter() {
         },
       });
 
-      // 5. Ambient Parallax Floating Glow Orbs
+      // 4. Stagger Step Cards in How Exchange Works on Every Scroll
+      ScrollTrigger.create({
+        trigger: `.${styles.howCardsRow}`,
+        start: "top 88%",
+        end: "bottom 10%",
+        toggleActions: "play reverse play reverse",
+        onEnter: () => {
+          gsap.fromTo(
+            `.${styles.howCard}`,
+            { y: 30, opacity: 0, scale: 0.92 },
+            {
+              y: 0,
+              opacity: 1,
+              scale: 1,
+              stagger: 0.09,
+              duration: 0.55,
+              ease: "back.out(1.3)",
+            }
+          );
+        },
+        onEnterBack: () => {
+          gsap.fromTo(
+            `.${styles.howCard}`,
+            { y: -20, opacity: 0 },
+            {
+              y: 0,
+              opacity: 1,
+              stagger: 0.06,
+              duration: 0.45,
+              ease: "power2.out",
+            }
+          );
+        },
+      });
+
+      // 5. Stagger History List Items on Every Scroll
+      ScrollTrigger.create({
+        trigger: `.${styles.historyList}`,
+        start: "top 88%",
+        end: "bottom 10%",
+        toggleActions: "play reverse play reverse",
+        onEnter: () => {
+          gsap.fromTo(
+            `.${styles.historyItem}`,
+            { x: -30, opacity: 0 },
+            {
+              x: 0,
+              opacity: 1,
+              stagger: 0.08,
+              duration: 0.45,
+              ease: "power2.out",
+            }
+          );
+        },
+      });
+
+      // 6. Ambient Parallax Floating Glow Orbs with continuous scrub
       gsap.to(".backgroundGlowOne", {
         scrollTrigger: {
           trigger: pageRef.current,
           start: "top top",
           end: "bottom bottom",
-          scrub: 1.5,
+          scrub: 1.2,
         },
-        y: 220,
+        y: 280,
+        rotate: 15,
         ease: "none",
       });
 
@@ -153,9 +206,10 @@ export default function ExchangeCenter() {
           trigger: pageRef.current,
           start: "top top",
           end: "bottom bottom",
-          scrub: 1.5,
+          scrub: 1.2,
         },
-        y: -180,
+        y: -220,
+        rotate: -15,
         ease: "none",
       });
     }, pageRef);
