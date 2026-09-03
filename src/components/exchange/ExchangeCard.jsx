@@ -122,7 +122,7 @@ export default function ExchangeCard({ option, balance, onConvert, onEarnGems })
         >
           {insufficient ? (
             <>
-              <FaSparkles size={13} /> Earn More Gems
+              <Sparkles size={13} /> Earn More Gems
             </>
           ) : (
             <>

@@ -51,7 +51,7 @@ export default function YieldCalculator({ balance, onSelectAmount }) {
         </div>
 
         <div className={styles.calcRatePill}>
-          <FaSparkles className={styles.sparkleIcon} />
+          <Sparkles size={14} className={styles.sparkleIcon} />
           <span>{tierLabel}</span>
           {bonusPercent > 0 && <span className={styles.calcBonusBadge}>+{bonusPercent}%</span>}
         </div>
