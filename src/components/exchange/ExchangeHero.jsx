@@ -63,7 +63,7 @@ export default function ExchangeHero() {
             animate={{ y: [0, -10, 0], rotate: [0, 5, -5, 0] }}
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
           >
-            <FaFire size={30} />
+            <FaFire size={36} />
           </motion.div>
 
           <motion.div
@@ -71,7 +71,7 @@ export default function ExchangeHero() {
             animate={{ x: [0, 4, 0] }}
             transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
           >
-            <FaArrowRight size={16} />
+            <FaArrowRight size={18} />
           </motion.div>
 
           <motion.div
@@ -79,7 +79,7 @@ export default function ExchangeHero() {
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
           >
-            <FaCoins size={28} />
+            <FaCoins size={32} />
           </motion.div>
         </div>
 

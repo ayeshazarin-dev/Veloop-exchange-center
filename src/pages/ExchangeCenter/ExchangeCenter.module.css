@@ -96,14 +96,14 @@
 
 /* Hero Header Section */
 .hero {
-  min-height: auto;
+  min-height: 260px;
   display: grid;
   grid-template-columns: 1.15fr 0.85fr;
   align-items: center;
-  gap: 20px;
-  padding: 24px 32px;
+  gap: 24px;
+  padding: 32px 38px;
   border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 20px;
+  border-radius: 22px;
   background:
     radial-gradient(circle at 80% 30%, rgba(168, 85, 247, 0.15), transparent 40%),
     radial-gradient(circle at 20% 80%, rgba(56, 189, 248, 0.12), transparent 40%),
@@ -111,7 +111,7 @@
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   box-shadow:
-    0 20px 50px rgba(0, 0, 0, 0.35),
+    0 22px 55px rgba(0, 0, 0, 0.35),
     inset 0 1px 0 rgba(255, 255, 255, 0.15);
   position: relative;
   overflow: hidden;
@@ -119,8 +119,8 @@
 
 .kicker,
 .eyebrow {
-  font-size: 9.5px;
-  letter-spacing: 0.15em;
+  font-size: 10px;
+  letter-spacing: 0.16em;
   font-weight: 700;
   color: #cbd5e1;
   text-transform: uppercase;
@@ -129,13 +129,13 @@
 .kicker {
   display: flex;
   align-items: center;
-  gap: 7px;
-  margin-bottom: 8px;
+  gap: 8px;
+  margin-bottom: 10px;
 }
 
 .kicker span {
-  width: 6px;
-  height: 6px;
+  width: 6.5px;
+  height: 6.5px;
   border-radius: 50%;
   background: var(--gold);
   box-shadow: 0 0 10px rgba(251, 191, 36, 0.9);
@@ -144,47 +144,47 @@
 .hero h1 {
   margin: 0;
   font-family: "Space Grotesk", sans-serif;
-  font-size: clamp(23px, 2.4vw, 34px);
+  font-size: clamp(26px, 3vw, 42px);
   line-height: 1.1;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.035em;
   background: linear-gradient(135deg, #ffffff 30%, #a5f3fc 70%, #c084fc 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .heroTitle {
-  margin: 7px 0 3px;
+  margin: 9px 0 4px;
   color: #e2e8f0;
-  font-size: clamp(14px, 1.3vw, 17px);
+  font-size: clamp(15px, 1.5vw, 18.5px);
   font-weight: 600;
 }
 
 .heroDescription {
-  max-width: 440px;
+  max-width: 460px;
   margin: 0;
   color: var(--muted);
-  line-height: 1.5;
-  font-size: 12px;
+  line-height: 1.55;
+  font-size: 13px;
 }
 
 .heroPills {
   display: flex;
-  gap: 6px;
+  gap: 7px;
   flex-wrap: wrap;
-  margin-top: 14px;
+  margin-top: 16px;
 }
 
 .heroPills span,
 .rateNote {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
+  gap: 6px;
   border: 1px solid rgba(255, 255, 255, 0.12);
   background: rgba(255, 255, 255, 0.04);
   color: #e2e8f0;
   border-radius: 100px;
-  padding: 4px 10px;
-  font-size: 10.5px;
+  padding: 5px 12px;
+  font-size: 11px;
   font-weight: 500;
   transition: all 0.25s ease;
   backdrop-filter: blur(8px);
@@ -198,7 +198,7 @@
 }
 
 .heroVisual {
-  min-height: 160px;
+  min-height: 185px;
   position: relative;
   display: grid;
   place-items: center;
@@ -206,45 +206,45 @@
 
 .heroHalo {
   position: absolute;
-  width: 170px;
-  height: 170px;
+  width: 190px;
+  height: 190px;
   border-radius: 50%;
   background: radial-gradient(circle, rgba(116, 185, 255, 0.15), transparent 67%);
   border: 1px solid rgba(116, 185, 255, 0.12);
 }
 
 .rewardVisual {
-  width: 130px;
-  height: 90px;
+  width: 135px;
+  height: 95px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 9px;
+  gap: 10px;
   position: relative;
 }
 
 .rewardVisualLarge {
-  width: 195px;
-  height: 135px;
-  gap: 14px;
+  width: 215px;
+  height: 150px;
+  gap: 16px;
 }
 
 .gemOrb,
 .veOrb {
-  width: 46px;
-  height: 46px;
+  width: 48px;
+  height: 48px;
   display: grid;
   place-items: center;
-  border-radius: 15px;
+  border-radius: 16px;
   position: relative;
   z-index: 3;
 }
 
 .rewardVisualLarge .gemOrb,
 .rewardVisualLarge .veOrb {
-  width: 56px;
-  height: 56px;
-  border-radius: 17px;
+  width: 64px;
+  height: 64px;
+  border-radius: 19px;
 }
 
 .gemOrb {
