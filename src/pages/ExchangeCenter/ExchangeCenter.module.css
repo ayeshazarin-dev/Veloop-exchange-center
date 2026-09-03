@@ -22,52 +22,194 @@
   font-family: "DM Sans", -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
+/* Cyber Subtle Grid Backdrop */
+.gridBackdrop {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 32px 32px;
+  background-position: center top;
+  pointer-events: none;
+  opacity: 0.6;
+  z-index: 1;
+}
+
 .container {
   width: min(1040px, calc(100% - 32px));
   margin: 0 auto;
   position: relative;
   z-index: 2;
-  padding: 22px 0 32px;
+  padding: 18px 0 32px;
 }
 
-/* Demo Control Bar */
-.demoBar {
+/* =========================================
+   TOP NAVBAR / BRAND HEADER
+   ========================================= */
+.navbar {
   display: flex;
   align-items: center;
-  gap: 10px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px dashed rgba(255, 255, 255, 0.12);
-  border-radius: 10px;
-  padding: 8px 14px;
+  justify-content: space-between;
+  padding: 12px 20px;
   margin-bottom: 20px;
+  background: rgba(25, 28, 46, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.navLeft {
+  display: flex;
+  align-items: center;
+  gap: 16px;
   flex-wrap: wrap;
 }
 
-.demoBarLabel {
-  font-size: 11px;
-  color: var(--muted);
+.brandLogo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.brandIcon {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.3), rgba(247, 201, 107, 0.2));
+  border: 1px solid rgba(168, 85, 247, 0.4);
+  color: #c084fc;
+  box-shadow: 0 0 15px rgba(168, 85, 247, 0.25);
+}
+
+.brandFire {
+  font-size: 17px;
+  filter: drop-shadow(0 0 6px #c084fc);
+}
+
+.brandText {
+  display: flex;
+  flex-direction: column;
+}
+
+.brandName {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #ffffff;
+  line-height: 1.1;
+}
+
+.brandTag {
+  font-size: 9px;
+  color: #8c93a8;
+  letter-spacing: 0.14em;
   font-weight: 600;
 }
 
-.demoBtn {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid var(--line);
-  color: var(--text);
-  border-radius: 7px;
-  padding: 5px 10px;
+/* Live Market Rate Ticker */
+.liveRateBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(85, 214, 163, 0.08);
+  border: 1px solid rgba(85, 214, 163, 0.25);
+  border-radius: 100px;
+  padding: 4px 10px;
   font-size: 11px;
-  cursor: pointer;
-  transition: all 0.2s ease;
 }
 
-.demoBtn:hover {
+.liveBeacon {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #55d6a3;
+  box-shadow: 0 0 8px #55d6a3;
+  animation: pulseBeacon 2s infinite ease-in-out;
+}
+
+@keyframes pulseBeacon {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(1.3); }
+}
+
+.rateText {
+  color: #cbd5e1;
+}
+
+.rateText strong {
+  color: #c084fc;
+}
+
+.rateGain {
+  color: #55d6a3;
+  font-weight: 700;
+  font-size: 10px;
+}
+
+.navRight {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.vipPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(114, 185, 255, 0.1);
+  border: 1px solid rgba(114, 185, 255, 0.25);
+  border-radius: 100px;
+  padding: 5px 12px;
+  color: #93c5fd;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.vipIcon {
+  color: #60a5fa;
+  font-size: 12px;
+}
+
+.navWallet {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(10, 12, 24, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 5px 12px;
+}
+
+.walletItem {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  font-weight: 700;
+  font-family: "Space Grotesk", sans-serif;
+}
+
+.walletGemIcon {
+  color: #c084fc;
+  font-size: 12px;
+}
+
+.walletVeIcon {
+  color: var(--gold);
+  font-size: 12px;
+}
+
+.walletDivider {
+  width: 1px;
+  height: 14px;
   background: rgba(255, 255, 255, 0.12);
-}
-
-.demoBtnActive {
-  background: rgba(114, 185, 255, 0.15);
-  border-color: rgba(114, 185, 255, 0.4);
-  color: var(--blue);
 }
 
 /* Background Glowing Orbs */
@@ -94,7 +236,9 @@
   top: 420px;
 }
 
-/* Hero Header Section */
+/* =========================================
+   HERO HEADER SECTION
+   ========================================= */
 .hero {
   min-height: 310px;
   display: grid;
@@ -306,14 +450,11 @@
 .howSection,
 .historySection,
 .rulesSection {
-  margin-top: 42px;
+  margin-top: 38px;
 }
 
-/* GSAP Stack Animation Wrapper */
 .gsapSection {
   will-change: transform, opacity;
-  transform-style: preserve-3d;
-  backface-visibility: hidden;
   position: relative;
 }
 
@@ -323,6 +464,7 @@
   align-items: flex-end;
   gap: 16px;
   margin-bottom: 18px;
+  flex-wrap: wrap;
 }
 
 .sectionHeading h2,
@@ -331,6 +473,46 @@
   font-size: 22px;
   margin: 3px 0 0;
   letter-spacing: -0.025em;
+}
+
+.sectionSubtext {
+  color: var(--muted);
+  margin: 4px 0 0;
+  font-size: 12.5px;
+}
+
+/* Category Filter Pills Group */
+.filterPillsGroup {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 4px;
+}
+
+.filterPill {
+  background: transparent;
+  border: 0;
+  color: #94a3b8;
+  padding: 6px 12px;
+  border-radius: 9px;
+  font-size: 11.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filterPill:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.filterPillActive {
+  color: #0b0f1a;
+  background: linear-gradient(135deg, #d4eaff, #77baff);
+  box-shadow: 0 4px 15px rgba(119, 186, 255, 0.3);
 }
 
 .infoOutline {
@@ -353,7 +535,9 @@
   background: rgba(255, 255, 255, 0.04);
 }
 
-/* User Balance Section */
+/* =========================================
+   USER BALANCE SECTION
+   ========================================= */
 .balanceGrid {
   display: grid;
   grid-template-columns: 1fr 1fr 0.65fr;
@@ -471,13 +655,198 @@
   align-self: flex-end;
 }
 
-.sectionSubtext {
-  color: var(--muted);
-  margin: 4px 0 0;
-  font-size: 12.5px;
+/* =========================================
+   INTERACTIVE YIELD CALCULATOR
+   ========================================= */
+.calculatorCard {
+  margin-top: 38px;
+  border: 1px solid rgba(114, 185, 255, 0.2);
+  border-radius: 22px;
+  padding: 24px 28px;
+  background: linear-gradient(145deg, rgba(30, 36, 62, 0.7), rgba(20, 24, 44, 0.8));
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.12);
 }
 
-/* Exchange Grid & Cards */
+.calcHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.calcTitleBox {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.calcIconBadge {
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.28);
+}
+
+.calcTitleBox h3 {
+  margin: 0;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 17px;
+  color: #ffffff;
+}
+
+.calcTitleBox p {
+  margin: 2px 0 0;
+  font-size: 11.5px;
+  color: var(--muted);
+}
+
+.calcRatePill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(251, 191, 36, 0.1);
+  border: 1px solid rgba(251, 191, 36, 0.3);
+  padding: 5px 12px;
+  border-radius: 100px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--gold);
+}
+
+.sparkleIcon {
+  color: #f59e0b;
+}
+
+.calcBonusBadge {
+  background: #55d6a3;
+  color: #0b0f1a;
+  border-radius: 100px;
+  padding: 1px 6px;
+  font-size: 9.5px;
+  font-weight: 800;
+}
+
+.calcBody {
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr;
+  gap: 24px;
+  align-items: center;
+}
+
+.calcSliderHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.calcValueDisplay {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #ffffff;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 15px;
+}
+
+.calcGemColor {
+  color: #c084fc;
+}
+
+.calcSlider {
+  width: 100%;
+  height: 6px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  outline: none;
+  cursor: pointer;
+  accent-color: #72b9ff;
+}
+
+.calcPresets {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.calcPresets button {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--line);
+  color: #cbd5e1;
+  border-radius: 8px;
+  padding: 5px 0;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.calcPresets button:hover {
+  background: rgba(114, 185, 255, 0.15);
+  border-color: rgba(114, 185, 255, 0.35);
+  color: #72b9ff;
+}
+
+.calcResultBox {
+  background: rgba(10, 12, 24, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 16px 20px;
+  text-align: center;
+}
+
+.calcResultLabel {
+  font-size: 9.5px;
+  letter-spacing: 0.12em;
+  color: #64748b;
+  font-weight: 700;
+}
+
+.calcResultValue {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  margin: 6px 0;
+}
+
+.calcVeColor {
+  color: var(--gold);
+  font-size: 18px;
+}
+
+.calcResultValue strong {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.calcResultValue span {
+  font-size: 13px;
+  color: var(--gold);
+  font-weight: 600;
+}
+
+.calcResultNote {
+  font-size: 10.5px;
+  color: #8c93a8;
+}
+
+/* =========================================
+   EXCHANGE GRID & CARDS
+   ========================================= */
 .exchangeGrid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -505,11 +874,22 @@
     0 0 30px rgba(56, 189, 248, 0.1);
 }
 
+.cardPopularHighlight {
+  border-color: rgba(192, 132, 252, 0.35);
+  box-shadow: 0 16px 40px rgba(168, 85, 247, 0.15);
+}
+
 .cardTop {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 16px 18px 0;
+}
+
+.cardBadgeGroup {
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .badge {
@@ -524,6 +904,19 @@
   box-shadow: 0 3px 12px rgba(192, 132, 252, 0.15);
 }
 
+.bonusTag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(85, 214, 163, 0.12);
+  border: 1px solid rgba(85, 214, 163, 0.3);
+  color: #55d6a3;
+  padding: 3px 8px;
+  border-radius: 100px;
+  font-size: 9.5px;
+  font-weight: 700;
+}
+
 .cardLabel {
   color: #cbd5e1;
   font-size: 11px;
@@ -534,7 +927,7 @@
 }
 
 .cardVisual {
-  min-height: 130px;
+  min-height: 125px;
   display: grid;
   place-items: center;
   background:
@@ -560,7 +953,7 @@
   color: var(--muted);
   line-height: 1.5;
   font-size: 12.5px;
-  margin: 6px 0 16px;
+  margin: 6px 0 14px;
   flex-grow: 1;
 }
 
@@ -570,8 +963,8 @@
   align-items: center;
   border: 1px solid rgba(255, 255, 255, 0.08);
   background: rgba(10, 12, 24, 0.4);
-  border-radius: 15px;
-  padding: 13px 15px;
+  border-radius: 14px;
+  padding: 12px 14px;
   gap: 6px;
 }
 
@@ -590,7 +983,7 @@
   align-items: center;
   gap: 5px;
   font-family: "Space Grotesk", sans-serif;
-  font-size: 15.5px;
+  font-size: 15px;
 }
 
 .conversionBox>div:first-child strong {
@@ -603,6 +996,57 @@
 
 .conversionLine {
   color: #64748b;
+}
+
+/* Locked Card Progress Box */
+.lockedBox {
+  margin-top: 12px;
+  background: rgba(251, 191, 36, 0.06);
+  border: 1px solid rgba(251, 191, 36, 0.2);
+  border-radius: 12px;
+  padding: 10px 12px;
+}
+
+.progressRow {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10.5px;
+  margin-bottom: 5px;
+}
+
+.progressLabel {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #fef08a;
+  font-weight: 600;
+}
+
+.progressVal {
+  color: var(--gold);
+  font-weight: 700;
+  font-family: "Space Grotesk", sans-serif;
+}
+
+.progressTrack {
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(90deg, #f7c96b, #f59e0b);
+  border-radius: 10px;
+  transition: width 0.4s ease;
+}
+
+.warningMini {
+  font-size: 10.5px;
+  color: #fef08a;
+  margin-top: 6px;
 }
 
 .warning {
@@ -624,13 +1068,8 @@
 }
 
 @keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 .convertButton,
@@ -646,7 +1085,7 @@
 
 .convertButton {
   width: 100%;
-  margin-top: 11px;
+  margin-top: 12px;
   padding: 10px 14px;
   display: flex;
   justify-content: center;
@@ -658,18 +1097,18 @@
 
 .convertButton:hover {
   transform: translateY(-1px);
-  box-shadow: 0 8px 20px rgba(91, 167, 255, 0.2);
+  box-shadow: 0 8px 20px rgba(91, 167, 255, 0.25);
 }
 
 .earnButton {
   color: #f2d99d;
   background: rgba(247, 201, 107, 0.09);
-  border: 1px solid rgba(247, 201, 107, 0.22);
+  border: 1px solid rgba(247, 201, 107, 0.25);
 }
 
 .earnButton:hover {
-  background: rgba(247, 201, 107, 0.15);
-  box-shadow: 0 8px 20px rgba(247, 201, 107, 0.15);
+  background: rgba(247, 201, 107, 0.16);
+  box-shadow: 0 8px 20px rgba(247, 201, 107, 0.2);
 }
 
 /* State Cards (Loading, Empty, Error) */
@@ -716,7 +1155,9 @@
   border: 1px solid rgba(168, 85, 247, 0.22);
 }
 
-/* How Exchange Works Section - Modern Visual Step Cards */
+/* =========================================
+   HOW EXCHANGE WORKS SECTION
+   ========================================= */
 .howCardsRow {
   display: flex;
   align-items: stretch;
@@ -798,7 +1239,6 @@
 .howCard_green .howCardAura { background: #55d6a3; }
 .howCard_gold .howCardAura { background: #f7c96b; opacity: 0.45; }
 
-/* Header & Step Pill */
 .howCardHeader {
   display: flex;
   align-items: center;
@@ -867,7 +1307,6 @@
   color: #64748b;
 }
 
-/* Center 3D Glowing Icon Orb Stage */
 .howIconStage {
   display: grid;
   place-items: center;
@@ -925,7 +1364,6 @@
   box-shadow: 0 6px 20px rgba(247, 201, 107, 0.25);
 }
 
-/* Card Body */
 .howCardBody {
   position: relative;
   z-index: 2;
@@ -948,7 +1386,6 @@
   margin: 0;
 }
 
-/* Progress Footer Bar */
 .howCardFooter {
   position: relative;
   z-index: 2;
@@ -975,7 +1412,6 @@
 .howProgressBarFill_green { background: linear-gradient(90deg, #55d6a3, #10b981); }
 .howProgressBarFill_gold { background: linear-gradient(90deg, #f7c96b, #f59e0b); }
 
-/* Floating Arrow Connector */
 .howCardConnector {
   display: flex;
   align-items: center;
@@ -985,7 +1421,9 @@
   align-self: center;
 }
 
-/* Recent Conversions History */
+/* =========================================
+   RECENT CONVERSIONS HISTORY
+   ========================================= */
 .historyList {
   border: 1px solid var(--line);
   border-radius: 16px;
@@ -1055,7 +1493,9 @@ span.failed {
   border-radius: 7px;
 }
 
-/* Exchange Rules */
+/* =========================================
+   EXCHANGE RULES
+   ========================================= */
 .rulesSection {
   display: flex;
   gap: 16px;
@@ -1091,7 +1531,9 @@ span.failed {
   line-height: 1.45;
 }
 
-/* Footer */
+/* =========================================
+   FOOTER
+   ========================================= */
 .footer {
   display: flex;
   flex-direction: column;
@@ -1141,7 +1583,9 @@ span.failed {
   color: #555b70;
 }
 
-/* Modals & Overlays */
+/* =========================================
+   MODALS & OVERLAYS
+   ========================================= */
 .modalBackdrop {
   position: fixed;
   inset: 0;
@@ -1381,9 +1825,10 @@ span.failed {
   margin-top: 2px;
 }
 
-/* Responsive Layout Breakpoints */
+/* =========================================
+   RESPONSIVE BREAKPOINTS
+   ========================================= */
 
-/* Laptop / Desktop (1024px+) */
 @media (max-width: 1024px) {
   .hero {
     grid-template-columns: 1fr;
@@ -1402,6 +1847,10 @@ span.failed {
     grid-column: span 2;
   }
 
+  .calcBody {
+    grid-template-columns: 1fr;
+  }
+
   .howCardsRow {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -1413,10 +1862,19 @@ span.failed {
   }
 }
 
-/* Tablet (768px) */
 @media (max-width: 768px) {
   .container {
     width: calc(100% - 24px);
+  }
+
+  .navbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .navLeft, .navRight {
+    justify-content: space-between;
   }
 
   .exchangeGrid {
@@ -1437,22 +1895,11 @@ span.failed {
     gap: 10px;
   }
 
-  .howCardConnector {
-    display: none;
-  }
-
   .rulesSection ul {
     grid-template-columns: 1fr;
   }
-
-  .footer {
-    flex-direction: column;
-    gap: 10px;
-    text-align: center;
-  }
 }
 
-/* Mobile (320px+) */
 @media (max-width: 480px) {
   .hero {
     padding: 24px 18px;

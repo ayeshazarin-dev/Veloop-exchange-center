@@ -10,6 +10,9 @@ export const exchangeOptions = [
     receiveVEs: 151,
     description: "Convert your daily earned Gems into VEs and boost your balance.",
     badge: "Daily",
+    bonus: "+5.4x Yield",
+    category: "daily",
+    popular: false,
   },
   {
     id: "exchange-02",
@@ -19,6 +22,9 @@ export const exchangeOptions = [
     receiveVEs: 230,
     description: "Turn your bonus Gems into VEs with enhanced exchange value.",
     badge: "Popular",
+    bonus: "+12% Bonus",
+    category: "popular",
+    popular: true,
   },
   {
     id: "exchange-03",
@@ -27,7 +33,10 @@ export const exchangeOptions = [
     requiredGems: 75,
     receiveVEs: 480,
     description: "Unlock high-tier reward value by converting accumulated Gems.",
-    badge: "High Value",
+    badge: "High Yield",
+    bonus: "+25% Bonus",
+    category: "high",
+    popular: true,
   },
   {
     id: "exchange-04",
@@ -37,6 +46,9 @@ export const exchangeOptions = [
     receiveVEs: 3400,
     description: "Maximize your earned reward points into VELOOP virtual currency.",
     badge: "Exclusive",
+    bonus: "+40% VIP Max",
+    category: "exclusive",
+    popular: false,
   },
 ];
 
