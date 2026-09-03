@@ -47,8 +47,121 @@ export default function ExchangeCenter() {
     return exchangeOptions;
   }, [simulateEmpty, activeCategory]);
 
-  // GSAP Refs
+  // GSAP Ref
   const pageRef = useRef(null);
+
+  // GSAP Entrance & ScrollTrigger Animations
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // 1. Initial Page Load Timeline
+      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+
+      tl.fromTo(
+        `.${styles.navbar}`,
+        { y: -25, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.6 }
+      )
+      .fromTo(
+        `.${styles.hero}`,
+        { y: 30, opacity: 0, scale: 0.98 },
+        { y: 0, opacity: 1, scale: 1, duration: 0.7 },
+        "-=0.3"
+      )
+      .fromTo(
+        `.${styles.balanceCard}, .${styles.balanceMini}`,
+        { y: 25, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.55, stagger: 0.1, ease: "back.out(1.4)" },
+        "-=0.3"
+      );
+
+      // 2. ScrollTrigger Reveal for Lower Sections
+      const revealSections = document.querySelectorAll(`.${styles.gsapSection}`);
+      revealSections.forEach((sec) => {
+        gsap.fromTo(
+          sec,
+          { y: 35, opacity: 0 },
+          {
+            scrollTrigger: {
+              trigger: sec,
+              start: "top 88%",
+              toggleActions: "play none none none",
+              once: true,
+            },
+            y: 0,
+            opacity: 1,
+            duration: 0.7,
+            ease: "power2.out",
+          }
+        );
+      });
+
+      // 3. Stagger Exchange Cards
+      ScrollTrigger.create({
+        trigger: `.${styles.exchangeGrid}`,
+        start: "top 85%",
+        once: true,
+        onEnter: () => {
+          gsap.fromTo(
+            `.${styles.exchangeCard}`,
+            { y: 30, opacity: 0, scale: 0.95 },
+            {
+              y: 0,
+              opacity: 1,
+              scale: 1,
+              stagger: 0.1,
+              duration: 0.6,
+              ease: "back.out(1.3)",
+            }
+          );
+        },
+      });
+
+      // 4. Stagger Step Cards in How Exchange Works
+      ScrollTrigger.create({
+        trigger: `.${styles.howCardsRow}`,
+        start: "top 85%",
+        once: true,
+        onEnter: () => {
+          gsap.fromTo(
+            `.${styles.howCard}`,
+            { y: 25, opacity: 0 },
+            {
+              y: 0,
+              opacity: 1,
+              stagger: 0.08,
+              duration: 0.5,
+              ease: "power2.out",
+            }
+          );
+        },
+      });
+
+      // 5. Ambient Parallax Floating Glow Orbs
+      gsap.to(".backgroundGlowOne", {
+        scrollTrigger: {
+          trigger: pageRef.current,
+          start: "top top",
+          end: "bottom bottom",
+          scrub: 1.5,
+        },
+        y: 220,
+        ease: "none",
+      });
+
+      gsap.to(".backgroundGlowTwo", {
+        scrollTrigger: {
+          trigger: pageRef.current,
+          start: "top top",
+          end: "bottom bottom",
+          scrub: 1.5,
+        },
+        y: -180,
+        ease: "none",
+      });
+    }, pageRef);
+
+    return () => ctx.revert();
+  }, [displayedOptions]);
 
   const handleConvertClick = (option) => {
     if (balance.gems < option.requiredGems) return;
