@@ -83,10 +83,8 @@ export default function HowExchangeWorks() {
               whileHover={{ y: -6, scale: 1.015 }}
               transition={{ duration: 0.25, ease: "easeOut" }}
             >
-              {/* Ambient Top Glow Layer */}
               <div className={styles.howCardAura} />
 
-              {/* Top Badge Row */}
               <div className={styles.howCardHeader}>
                 <div className={`${styles.howStepPill} ${styles[`howStepPill_${step.color}`]}`}>
                   <span className={styles.howStepDot} />
@@ -94,7 +92,6 @@ export default function HowExchangeWorks() {
                 </div>
               </div>
 
-              {/* Center 3D Glowing Icon Orb */}
               <div className={styles.howIconStage}>
                 <motion.div
                   className={`${styles.howIconOrb} ${styles[`howIconOrb_${step.color}`]}`}
@@ -105,13 +102,11 @@ export default function HowExchangeWorks() {
                 </motion.div>
               </div>
 
-              {/* Content Section */}
               <div className={styles.howCardBody}>
                 <h3>{step.title}</h3>
                 <p>{step.text}</p>
               </div>
 
-              {/* Bottom Progress Bar */}
               <div className={styles.howCardFooter}>
                 <div className={styles.howProgressBarTrack}>
                   <div 

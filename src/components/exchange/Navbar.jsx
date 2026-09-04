@@ -21,7 +21,6 @@ export default function Navbar({ balance }) {
           </div>
         </motion.div>
 
-        {/* Live Market Ticker */}
         <div className={styles.liveRateBadge}>
           <span className={styles.liveBeacon} />
           <span className={styles.rateText}>
@@ -32,13 +31,11 @@ export default function Navbar({ balance }) {
       </div>
 
       <div className={styles.navRight}>
-        {/* VIP Tier Badge */}
         <div className={styles.vipPill}>
           <FaGem className={styles.vipIcon} />
           <span>Diamond Tier</span>
         </div>
 
-        {/* User Mini Balance Pill */}
         <div className={styles.navWallet}>
           <div className={styles.walletItem}>
             <FaFire className={styles.walletGemIcon} />

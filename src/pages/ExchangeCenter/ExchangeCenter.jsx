@@ -6,7 +6,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { exchangeOptions, initialBalance, recentConversions } from "../../data/exchangeData";
 import styles from "./ExchangeCenter.module.css";
 
-// Modular Components
 import Navbar from "../../components/exchange/Navbar";
 import ExchangeHero from "../../components/exchange/ExchangeHero";
 import BalanceOverview from "../../components/exchange/BalanceOverview";
@@ -31,7 +30,6 @@ export default function ExchangeCenter() {
   const [history, setHistory] = useState(recentConversions);
   const [activeCategory, setActiveCategory] = useState("all");
 
-  // Interactive UI state toggles for full testing
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [simulateEmpty, setSimulateEmpty] = useState(false);
@@ -47,13 +45,10 @@ export default function ExchangeCenter() {
     return exchangeOptions;
   }, [simulateEmpty, activeCategory]);
 
-  // GSAP Ref
   const pageRef = useRef(null);
 
-  // GSAP Entrance & ScrollTrigger Animations
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // 1. Initial Page Load Timeline
       const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
       tl.fromTo(
@@ -74,7 +69,6 @@ export default function ExchangeCenter() {
         "-=0.3"
       );
 
-      // 2. ScrollTrigger Reveal for Every Section on Every Scroll (Up & Down)
       const revealSections = document.querySelectorAll(`.${styles.gsapSection}`);
       revealSections.forEach((sec) => {
         gsap.fromTo(
@@ -96,7 +90,6 @@ export default function ExchangeCenter() {
         );
       });
 
-      // 3. Stagger Exchange Cards on Every Scroll
       ScrollTrigger.create({
         trigger: `.${styles.exchangeGrid}`,
         start: "top 88%",
@@ -132,7 +125,6 @@ export default function ExchangeCenter() {
         },
       });
 
-      // 4. Stagger Step Cards in How Exchange Works on Every Scroll
       ScrollTrigger.create({
         trigger: `.${styles.howCardsRow}`,
         start: "top 88%",
@@ -167,7 +159,6 @@ export default function ExchangeCenter() {
         },
       });
 
-      // 5. Stagger History List Items on Every Scroll
       ScrollTrigger.create({
         trigger: `.${styles.historyList}`,
         start: "top 88%",
@@ -188,7 +179,6 @@ export default function ExchangeCenter() {
         },
       });
 
-      // 6. Ambient Parallax Floating Glow Orbs with continuous scrub
       gsap.to(".backgroundGlowOne", {
         scrollTrigger: {
           trigger: pageRef.current,
@@ -223,7 +213,6 @@ export default function ExchangeCenter() {
   };
 
   const handleEarnGems = (missingGems) => {
-    // Add bonus gems to user balance so they can test unlocked conversions
     const bonus = Math.max(50, missingGems + 10);
     setBalance((prev) => ({
       ...prev,
@@ -258,21 +247,17 @@ export default function ExchangeCenter() {
 
   return (
     <main className={styles.page} ref={pageRef}>
-      {/* Background Cyber Mesh Grid and Ambient Lighting */}
       <div className={styles.gridBackdrop} aria-hidden="true" />
       <div className={`${styles.backgroundGlowOne} backgroundGlowOne`} />
       <div className={`${styles.backgroundGlowTwo} backgroundGlowTwo`} />
 
       <div className={styles.container}>
-        {/* Modern Top Header / Navbar */}
         <Navbar balance={balance} />
 
-        {/* 1. Hero Header */}
         <div>
           <ExchangeHero />
         </div>
 
-        {/* 2. User Balance Overview */}
         <div className={styles.gsapSection}>
           <BalanceOverview
             balance={balance}
@@ -281,12 +266,10 @@ export default function ExchangeCenter() {
           />
         </div>
 
-        {/* 3. Interactive Yield Simulator / Calculator */}
         <div className={styles.gsapSection}>
           <YieldCalculator balance={balance} onSelectAmount={(gems) => {}} />
         </div>
 
-        {/* 4. Available Conversions Section with Category Filter Tabs */}
         <div className={styles.gsapSection}>
           <section className={styles.conversionsSection}>
             <div className={styles.sectionHeading}>
@@ -298,7 +281,6 @@ export default function ExchangeCenter() {
                 </p>
               </div>
 
-              {/* Category Filter Pills */}
               <div className={styles.filterPillsGroup}>
                 <button
                   type="button"
@@ -375,22 +357,18 @@ export default function ExchangeCenter() {
           </section>
         </div>
 
-        {/* 5. How Exchange Works (5 Steps Walkthrough) */}
         <div className={styles.gsapSection}>
           <HowExchangeWorks />
         </div>
 
-        {/* 6. Recent Conversions Activity */}
         <div className={styles.gsapSection}>
           <ExchangeHistory history={history} />
         </div>
 
-        {/* 7. Platform Exchange Rules */}
         <div className={styles.gsapSection}>
           <ExchangeRules />
         </div>
 
-        {/* 8. Footer */}
         <div className={styles.gsapSection}>
           <footer className={styles.footer}>
             <div className={styles.footerBottom}>
@@ -409,7 +387,6 @@ export default function ExchangeCenter() {
         </div>
       </div>
 
-      {/* Interactive Modals */}
       <AnimatePresence>
         {selectedOption && (
           <ExchangeModal

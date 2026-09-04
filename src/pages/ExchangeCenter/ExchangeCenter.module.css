@@ -22,7 +22,6 @@
   font-family: "DM Sans", -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-/* Cyber Subtle Grid Backdrop */
 .gridBackdrop {
   position: absolute;
   inset: 0;
@@ -44,9 +43,6 @@
   padding: 18px 0 32px;
 }
 
-/* =========================================
-   TOP NAVBAR / BRAND HEADER
-   ========================================= */
 .navbar {
   display: flex;
   align-items: center;
@@ -113,7 +109,6 @@
   font-weight: 600;
 }
 
-/* Live Market Rate Ticker */
 .liveRateBadge {
   display: inline-flex;
   align-items: center;
@@ -212,7 +207,6 @@
   background: rgba(255, 255, 255, 0.12);
 }
 
-/* Background Glowing Orbs */
 .backgroundGlowOne,
 .backgroundGlowTwo {
   position: absolute;
@@ -236,9 +230,6 @@
   top: 420px;
 }
 
-/* =========================================
-   HERO HEADER SECTION
-   ========================================= */
 .hero {
   min-height: 310px;
   display: grid;
@@ -444,7 +435,6 @@
   color: var(--gold);
 }
 
-/* Sections Layout */
 .balanceSection,
 .conversionsSection,
 .howSection,
@@ -481,7 +471,6 @@
   font-size: 12.5px;
 }
 
-/* Category Filter Pills Group */
 .filterPillsGroup {
   display: flex;
   align-items: center;
@@ -535,9 +524,6 @@
   background: rgba(255, 255, 255, 0.04);
 }
 
-/* =========================================
-   USER BALANCE SECTION
-   ========================================= */
 .balanceGrid {
   display: grid;
   grid-template-columns: 1fr 1fr 0.65fr;
@@ -655,9 +641,6 @@
   align-self: flex-end;
 }
 
-/* =========================================
-   INTERACTIVE YIELD CALCULATOR
-   ========================================= */
 .calculatorCard {
   margin-top: 38px;
   border: 1px solid rgba(114, 185, 255, 0.2);
@@ -844,9 +827,6 @@
   color: #8c93a8;
 }
 
-/* =========================================
-   EXCHANGE GRID & CARDS
-   ========================================= */
 .exchangeGrid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -998,7 +978,6 @@
   color: #64748b;
 }
 
-/* Locked Card Progress Box */
 .lockedBox {
   margin-top: 12px;
   background: rgba(251, 191, 36, 0.06);
@@ -1111,7 +1090,6 @@
   box-shadow: 0 8px 20px rgba(247, 201, 107, 0.2);
 }
 
-/* State Cards (Loading, Empty, Error) */
 .stateCard {
   min-height: 230px;
   border: 1px dashed rgba(255, 255, 255, 0.14);
@@ -1155,9 +1133,6 @@
   border: 1px solid rgba(168, 85, 247, 0.22);
 }
 
-/* =========================================
-   HOW EXCHANGE WORKS SECTION
-   ========================================= */
 .howCardsRow {
   display: flex;
   align-items: stretch;
@@ -1219,7 +1194,6 @@
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(247, 201, 107, 0.3);
 }
 
-/* Card Aura Glow */
 .howCardAura {
   position: absolute;
   top: -24px;
@@ -1421,9 +1395,6 @@
   align-self: center;
 }
 
-/* =========================================
-   RECENT CONVERSIONS HISTORY
-   ========================================= */
 .historyList {
   border: 1px solid var(--line);
   border-radius: 16px;
@@ -1493,9 +1464,6 @@ span.failed {
   border-radius: 7px;
 }
 
-/* =========================================
-   EXCHANGE RULES
-   ========================================= */
 .rulesSection {
   display: flex;
   gap: 16px;
@@ -1531,9 +1499,6 @@ span.failed {
   line-height: 1.45;
 }
 
-/* =========================================
-   FOOTER
-   ========================================= */
 .footer {
   display: flex;
   flex-direction: column;
@@ -1583,9 +1548,6 @@ span.failed {
   color: #555b70;
 }
 
-/* =========================================
-   MODALS & OVERLAYS
-   ========================================= */
 .modalBackdrop {
   position: fixed;
   inset: 0;
@@ -1749,7 +1711,6 @@ span.failed {
   box-shadow: 0 8px 20px rgba(69, 154, 255, 0.3);
 }
 
-/* Success Modal */
 .successModal {
   text-align: center;
 }
@@ -1775,7 +1736,6 @@ span.failed {
   margin: 16px 0 20px;
 }
 
-/* Info Modal Content */
 .infoRows {
   margin-top: 16px;
   display: flex;
@@ -1825,9 +1785,6 @@ span.failed {
   margin-top: 2px;
 }
 
-/* =========================================
-   RESPONSIVE BREAKPOINTS
-   ========================================= */
 
 @media (max-width: 1024px) {
   .hero {

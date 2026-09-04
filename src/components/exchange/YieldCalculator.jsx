@@ -7,7 +7,6 @@ import styles from "../../pages/ExchangeCenter/ExchangeCenter.module.css";
 export default function YieldCalculator({ balance, onSelectAmount }) {
   const [gemInput, setGemInput] = useState(100);
 
-  // Dynamic multiplier logic for simulation
   const { estimatedVEs, bonusPercent, tierLabel } = useMemo(() => {
     let rate = 5.4;
     let bonus = 0;
@@ -58,7 +57,6 @@ export default function YieldCalculator({ balance, onSelectAmount }) {
       </div>
 
       <div className={styles.calcBody}>
-        {/* Slider & Controls */}
         <div className={styles.calcControls}>
           <div className={styles.calcSliderHeader}>
             <span>Exchange Amount</span>
@@ -77,7 +75,6 @@ export default function YieldCalculator({ balance, onSelectAmount }) {
             className={styles.calcSlider}
           />
 
-          {/* Quick Preset Buttons */}
           <div className={styles.calcPresets}>
             <button type="button" onClick={() => setPreset(25)}>25%</button>
             <button type="button" onClick={() => setPreset(50)}>50%</button>
@@ -86,7 +83,6 @@ export default function YieldCalculator({ balance, onSelectAmount }) {
           </div>
         </div>
 
-        {/* Live Return Card */}
         <div className={styles.calcResultBox}>
           <div className={styles.calcResultLabel}>ESTIMATED RETURN</div>
           <div className={styles.calcResultValue}>

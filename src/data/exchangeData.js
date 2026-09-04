@@ -1,5 +1,3 @@
-// Centralized exchange data for VELOOP Rewards Exchange Center
-// Preserving business logic and rates for Gems -> VEs conversions
 
 export const exchangeOptions = [
   {
