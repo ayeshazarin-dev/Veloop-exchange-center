@@ -39,6 +39,23 @@
   z-index: 1;
 }
 
+.bgWatermark {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(70px, 14vw, 160px);
+  font-weight: 900;
+  letter-spacing: 0.2em;
+  color: rgba(255, 255, 255, 0.015);
+  user-select: none;
+  pointer-events: none;
+  z-index: 1;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
 .backgroundGlowOne,
 .backgroundGlowTwo {
   position: absolute;

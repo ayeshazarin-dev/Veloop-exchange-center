@@ -202,6 +202,7 @@ export default function ExchangeCenter() {
   return (
     <main className={styles.page} ref={pageRef}>
       <div className={styles.gridBackdrop} aria-hidden="true" />
+      <div className={styles.bgWatermark} aria-hidden="true">VELOOP</div>
       <div className={`${styles.backgroundGlowOne} backgroundGlowOne`} />
       <div className={`${styles.backgroundGlowTwo} backgroundGlowTwo`} />
 

@@ -51,10 +51,6 @@ export default function ExchangeHistory({ history }) {
             whileHover={{ x: 4, backgroundColor: "rgba(255, 255, 255, 0.04)" }}
             transition={{ duration: 0.2 }}
           >
-            <div className={`${styles.historyIcon} ${getStatusClass(item.status)}`}>
-              {getStatusIcon(item.status)}
-            </div>
-            
             <div className={styles.historyDetails}>
               <div className={styles.historyAmountRow}>
                 <span className={styles.historyGemBadge}>
