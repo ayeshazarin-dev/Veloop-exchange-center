@@ -1,37 +1,10 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { FaArrowRight, FaChevronRight, FaCircleQuestion, FaCoins, FaFire, FaAward, FaBolt } from "react-icons/fa6";
+import { FaArrowRight, FaChevronRight, FaBolt } from "react-icons/fa6";
 import { Sparkles } from "lucide-react";
+import gemImg from "../../assets/images/gem_crystal.png";
+import coinImg from "../../assets/images/ves_coin.png";
 import styles from "../../pages/ExchangeCenter/ExchangeCenter.module.css";
-
-function RewardVisualMini({ isFeatured, isPopular }) {
-  return (
-    <div className={styles.rewardVisual}>
-      <motion.div
-        className={styles.orbit}
-        animate={{ rotate: 360 }}
-        transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
-      />
-      <motion.div
-        className={styles.gemOrb}
-        animate={{ y: [0, -6, 0] }}
-        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-      >
-        <FaFire size={24} />
-      </motion.div>
-      <div className={styles.rewardArrow}>
-        <FaArrowRight size={14} />
-      </div>
-      <motion.div
-        className={styles.veOrb}
-        animate={{ y: [0, 6, 0] }}
-        transition={{ duration: 2.8, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
-      >
-        <FaCoins size={22} />
-      </motion.div>
-    </div>
-  );
-}
 
 export default function ExchangeCard({ option, balance, onConvert, onEarnGems }) {
   const insufficient = balance.gems < option.requiredGems;
@@ -48,56 +21,75 @@ export default function ExchangeCard({ option, balance, onConvert, onEarnGems })
 
   return (
     <motion.article
-      className={`${styles.exchangeCard} ${option.popular ? styles.cardPopularHighlight : ""}`}
-      whileHover={{ y: -5 }}
-      transition={{ duration: 0.22 }}
+      className={`${styles.exchangeCard} ${option.popular ? styles.cardPopularHighlight : ""} ${option.badge === "Exclusive" ? styles.cardExclusiveHighlight : ""}`}
+      whileHover={{ y: -4, scale: 1.01 }}
+      transition={{ duration: 0.2 }}
     >
       <div className={styles.cardTop}>
         <div className={styles.cardBadgeGroup}>
-          <span className={styles.badge}>{option.badge}</span>
+          <span className={`${styles.badge} ${option.popular ? styles.badgePopular : option.badge === "Exclusive" ? styles.badgeExclusive : ""}`}>
+            {option.badge}
+          </span>
           {option.bonus && (
             <span className={styles.bonusTag}>
               <FaBolt size={10} /> {option.bonus}
             </span>
           )}
         </div>
-        <span className={styles.cardLabel}>
-          <FaAward size={12} />
-          {option.label}
-        </span>
       </div>
 
       <div className={styles.cardVisual} aria-hidden="true">
-        <RewardVisualMini isFeatured={option.category === "high"} isPopular={option.popular} />
+        <div className={styles.cardAssetShowcase}>
+          <div className={styles.cardAssetCluster}>
+            <div className={styles.cardAssetGemWrapper}>
+              <img src={gemImg} alt="Gems" className={styles.cardGemImg} />
+            </div>
+
+            <div className={styles.cardAssetFlowConnector}>
+              <div className={styles.cardFlowArrow}>
+                <FaArrowRight size={14} />
+              </div>
+            </div>
+
+            <div className={styles.cardAssetCoinWrapper}>
+              <img src={coinImg} alt="VEs Coins" className={styles.cardCoinImg} />
+            </div>
+          </div>
+        </div>
       </div>
 
       <div className={styles.cardContent}>
-        <h3>{option.title}</h3>
-        <p>{option.description}</p>
+        <div className={styles.cardHeader}>
+          <h3>{option.title}</h3>
+        </div>
 
         <div className={styles.conversionBox}>
-          <div>
-            <span className={styles.miniLabel}>Required Gems</span>
-            <strong>
-              <FaFire size={14} /> {option.requiredGems}
-            </strong>
+          <div className={styles.conversionFrom}>
+            <span className={styles.miniLabel}>Exchange</span>
+            <div className={styles.conversionItemValue}>
+              <img src={gemImg} alt="Gems" className={styles.miniAssetIcon} />
+              <strong>{option.requiredGems} Gems</strong>
+            </div>
           </div>
+
           <div className={styles.conversionLine}>
-            <FaArrowRight size={14} />
+            <FaArrowRight size={13} />
           </div>
-          <div className={styles.receive}>
-            <span className={styles.miniLabel}>You receive</span>
-            <strong>
-              <FaCoins size={14} /> {option.receiveVEs} VEs
-            </strong>
+
+          <div className={styles.conversionTo}>
+            <span className={styles.miniLabel}>Receive</span>
+            <div className={styles.conversionItemValue}>
+              <img src={coinImg} alt="VEs" className={styles.miniAssetIcon} />
+              <strong className={styles.receiveGold}>+{option.receiveVEs.toLocaleString()} VEs</strong>
+            </div>
           </div>
         </div>
 
-        {insufficient ? (
+        {insufficient && (
           <div className={styles.lockedBox}>
             <div className={styles.progressRow}>
               <span className={styles.progressLabel}>
-                <FaCircleQuestion size={12} /> Unlock Progress
+                Need {missingGems} more Gems
               </span>
               <span className={styles.progressVal}>
                 {balance.gems} / {option.requiredGems} ({progressPercent}%)
@@ -109,11 +101,8 @@ export default function ExchangeCard({ option, balance, onConvert, onEarnGems })
                 style={{ width: `${progressPercent}%` }}
               />
             </div>
-            <div className={styles.warningMini}>
-              Need <strong>{missingGems}</strong> more Gems to unlock this reward
-            </div>
           </div>
-        ) : null}
+        )}
 
         <button
           className={`${styles.convertButton} ${insufficient ? styles.earnButton : ""}`}
@@ -122,11 +111,11 @@ export default function ExchangeCard({ option, balance, onConvert, onEarnGems })
         >
           {insufficient ? (
             <>
-              <Sparkles size={13} /> Earn More Gems
+              <Sparkles size={14} /> Earn +{Math.max(50, missingGems + 10)} Gems (Watch Ad)
             </>
           ) : (
             <>
-              Convert Rewards <FaChevronRight size={13} />
+              Instant Convert <FaChevronRight size={12} />
             </>
           )}
         </button>

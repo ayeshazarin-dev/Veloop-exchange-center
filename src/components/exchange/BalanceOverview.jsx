@@ -1,5 +1,7 @@
 import React from "react";
-import { FaCoins, FaFire, FaClockRotateLeft, FaCircleInfo } from "react-icons/fa6";
+import { FaClockRotateLeft, FaCircleInfo, FaArrowTrendUp } from "react-icons/fa6";
+import gemImg from "../../assets/images/gem_crystal.png";
+import coinImg from "../../assets/images/ves_coin.png";
 import styles from "../../pages/ExchangeCenter/ExchangeCenter.module.css";
 
 export default function BalanceOverview({ balance, totalConversions, onOpenInfo }) {
@@ -7,72 +9,79 @@ export default function BalanceOverview({ balance, totalConversions, onOpenInfo 
     <section className={styles.balanceSection}>
       <div className={styles.sectionHeading}>
         <div>
-          <p className={styles.eyebrow}>YOUR REWARDS</p>
-          <h2>Balance overview</h2>
+          <p className={styles.eyebrow}>YOUR WALLET</p>
+          <h2>Balance Overview</h2>
         </div>
         <button
           className={styles.infoOutline}
           onClick={onOpenInfo}
           aria-label="How rewards work"
         >
-          <FaCircleInfo size={14} /> How it works
+          <FaCircleInfo size={13} /> Exchange Guide
         </button>
       </div>
 
       <div className={styles.balanceGrid}>
-        <div className={styles.balanceCard}>
-          <div className={styles.balanceIcon}>
-            <FaFire size={24} />
+        {/* Gems Card */}
+        <div className={`${styles.balanceCard} ${styles.balanceCardGem}`}>
+          <div className={styles.balanceAssetAvatarWrapper}>
+            <img src={gemImg} alt="Gems" className={styles.balanceAssetAvatar} />
+            <span className={styles.balanceAssetGlowPurple} />
           </div>
           <div className="flex-grow-1">
             <div className={styles.balanceLabel}>
-              Available Gems
+              <span>Available Gems</span>
               <button
                 className={styles.infoButton}
                 onClick={onOpenInfo}
-                title="Gems are reward credits earned through eligible activities."
+                title="Gems earned from milestones and ads"
                 aria-label="Information about Gems"
               >
-                <FaCircleInfo size={12} />
+                <FaCircleInfo size={11} />
               </button>
             </div>
             <div className={styles.balanceValue}>
-              {balance.gems.toLocaleString()} <span>Gems</span>
+              {balance.gems.toLocaleString()} <span className={styles.balanceUnitGem}>Gems</span>
             </div>
           </div>
         </div>
 
-        <div className={styles.balanceCard}>
-          <div className={styles.balanceIcon}>
-            <FaCoins size={24} />
+        {/* VEs Card */}
+        <div className={`${styles.balanceCard} ${styles.balanceCardVe}`}>
+          <div className={styles.balanceAssetAvatarWrapper}>
+            <img src={coinImg} alt="VEs" className={styles.balanceAssetAvatar} />
+            <span className={styles.balanceAssetGlowGold} />
           </div>
           <div className="flex-grow-1">
             <div className={styles.balanceLabel}>
-              Available VEs
+              <span>Available VEs</span>
               <button
                 className={styles.infoButton}
                 onClick={onOpenInfo}
-                title="VEs are VELOOP Rewards' virtual reward currency."
+                title="VEs virtual reward balance"
                 aria-label="Information about VEs"
               >
-                <FaCircleInfo size={12} />
+                <FaCircleInfo size={11} />
               </button>
             </div>
             <div className={styles.balanceValue}>
-              {balance.ves.toLocaleString()} <span>VEs</span>
+              {balance.ves.toLocaleString()} <span className={styles.balanceUnitGold}>VEs</span>
             </div>
           </div>
         </div>
 
+        {/* Conversions Mini Card */}
         <div className={styles.balanceMini}>
           <div className={styles.miniIcon}>
-            <FaClockRotateLeft size={20} />
+            <FaClockRotateLeft size={18} />
           </div>
           <div>
             <span>Conversions</span>
             <strong>{totalConversions}</strong>
           </div>
-          <small>successful rewards</small>
+          <div className={styles.balanceMiniGrowth}>
+            <FaArrowTrendUp size={11} /> Active
+          </div>
         </div>
       </div>
     </section>

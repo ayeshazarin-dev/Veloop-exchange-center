@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { FaArrowRight, FaCoins, FaFire, FaSpinner, FaVault, FaXmark } from "react-icons/fa6";
+import { FaArrowRight, FaSpinner, FaVault, FaXmark } from "react-icons/fa6";
+import gemImg from "../../assets/images/gem_crystal.png";
+import coinImg from "../../assets/images/ves_coin.png";
 import styles from "../../pages/ExchangeCenter/ExchangeCenter.module.css";
 
 export default function ExchangeModal({ option, balance, onClose, onConfirm }) {
@@ -21,7 +23,7 @@ export default function ExchangeModal({ option, balance, onClose, onConfirm }) {
     setIsConverting(true);
     setTimeout(() => {
       onConfirm(option);
-    }, 850);
+    }, 750);
   };
 
   return (
@@ -32,10 +34,10 @@ export default function ExchangeModal({ option, balance, onClose, onConfirm }) {
     >
       <motion.div
         className={styles.modal}
-        initial={{ opacity: 0, y: 22, scale: 0.96 }}
+        initial={{ opacity: 0, y: 22, scale: 0.95 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
-        exit={{ opacity: 0, y: 18, scale: 0.96 }}
-        transition={{ type: "spring", damping: 25, stiffness: 300 }}
+        exit={{ opacity: 0, y: 18, scale: 0.95 }}
+        transition={{ type: "spring", damping: 25, stiffness: 320 }}
         onMouseDown={(e) => e.stopPropagation()}
         role="dialog"
         aria-modal="true"
@@ -47,39 +49,53 @@ export default function ExchangeModal({ option, balance, onClose, onConfirm }) {
           disabled={isConverting}
           aria-label="Close modal"
         >
-          <FaXmark size={17} />
+          <FaXmark size={16} />
         </button>
 
-        <div className={styles.modalIcon}>
-          <FaVault size={24} />
+        <div className={styles.modalHeaderStage}>
+          <div className={styles.modalIcon}>
+            <FaVault size={22} />
+          </div>
+          <div>
+            <p className={styles.eyebrow}>REWARD CONVERSION</p>
+            <h2 id="confirm-modal-title">Confirm Exchange</h2>
+          </div>
         </div>
 
-        <p className={styles.eyebrow}>REWARD CONVERSION</p>
-        <h2 id="confirm-modal-title">Confirm Conversion</h2>
         <p className={styles.modalSubtext}>
-          Review your reward conversion details before confirming.
+          Review your conversion details below before completing this transaction.
         </p>
 
         <div className={styles.confirmFlow}>
-          <div>
-            <FaFire size={22} />
+          <div className={styles.confirmFlowItem}>
+            <div className={styles.confirmAssetAvatarWrap}>
+              <img src={gemImg} alt="Gems" className={styles.confirmAssetImg} />
+            </div>
+            <span className={styles.confirmFlowLabel}>You Pay</span>
             <strong>{option.requiredGems} Gems</strong>
           </div>
-          <FaArrowRight size={20} />
-          <div>
-            <FaCoins size={22} />
-            <strong>{option.receiveVEs} VEs</strong>
+
+          <div className={styles.confirmFlowDivider}>
+            <FaArrowRight size={16} />
+          </div>
+
+          <div className={styles.confirmFlowItem}>
+            <div className={styles.confirmAssetAvatarWrapGold}>
+              <img src={coinImg} alt="VEs" className={styles.confirmAssetImg} />
+            </div>
+            <span className={styles.confirmFlowLabelGold}>You Receive</span>
+            <strong className={styles.confirmGoldText}>+{option.receiveVEs} VEs</strong>
           </div>
         </div>
 
         <div className={styles.afterBox}>
           <div>
-            <span>Gems after conversion</span>
-            <strong>{afterGems.toLocaleString()}</strong>
+            <span>Balance after exchange</span>
+            <strong>{afterGems.toLocaleString()} Gems</strong>
           </div>
           <div>
-            <span>VEs after conversion</span>
-            <strong>{afterVEs.toLocaleString()}</strong>
+            <span>New VEs Balance</span>
+            <strong className={styles.confirmGoldText}>{afterVEs.toLocaleString()} VEs</strong>
           </div>
         </div>
 
@@ -98,10 +114,10 @@ export default function ExchangeModal({ option, balance, onClose, onConfirm }) {
           >
             {isConverting ? (
               <>
-                <FaSpinner className={styles.spinner} size={16} /> Converting...
+                <FaSpinner className={styles.spinner} size={15} /> Converting...
               </>
             ) : (
-              "Confirm Conversion"
+              "Confirm & Convert"
             )}
           </button>
         </div>

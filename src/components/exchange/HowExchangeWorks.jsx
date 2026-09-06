@@ -1,59 +1,37 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { 
-  FaFire, 
-  FaSliders, 
-  FaReceipt, 
-  FaShieldHalved, 
-  FaCoins 
-} from "react-icons/fa6";
 import styles from "../../pages/ExchangeCenter/ExchangeCenter.module.css";
 
 const steps = [
   {
     number: "01",
-    tag: "EARN",
     title: "Earn Gems",
-    text: "Collect reward Gems through eligible activities, streak milestones, and rewards.",
-    icon: FaFire,
+    text: "Collect reward Gems via milestones, streaks & ads.",
     color: "purple",
-    progress: "20%",
   },
   {
     number: "02",
-    tag: "CHOOSE",
-    title: "Choose Conversion",
-    text: "Select an eligible reward tier tailored to your available balance.",
-    icon: FaSliders,
+    title: "Choose Tier",
+    text: "Select a conversion package matching your balance.",
     color: "cyan",
-    progress: "40%",
   },
   {
     number: "03",
-    tag: "REVIEW",
-    title: "Review Exchange",
-    text: "Check the exact predefined Gems required and VEs you will receive.",
-    icon: FaReceipt,
+    title: "Review Rate",
+    text: "Check exact Gems spent and VEs reward return.",
     color: "blue",
-    progress: "60%",
   },
   {
     number: "04",
-    tag: "CONFIRM",
-    title: "Confirm",
-    text: "Approve the reward conversion in the secure confirmation dialog.",
-    icon: FaShieldHalved,
+    title: "Confirm Swap",
+    text: "Approve in one tap with zero transaction fees.",
     color: "green",
-    progress: "80%",
   },
   {
     number: "05",
-    tag: "REWARD",
     title: "Receive VEs",
-    text: "Your VEs balance is updated immediately upon successful completion.",
-    icon: FaCoins,
+    text: "Instant wallet balance credit ready for redemption.",
     color: "gold",
-    progress: "100%",
     isFinal: true,
   },
 ];
@@ -63,25 +41,24 @@ export default function HowExchangeWorks() {
     <section className={styles.howSection}>
       <div className={styles.sectionHeading}>
         <div>
-          <p className={styles.eyebrow}>SIMPLE BY DESIGN</p>
-          <h2>How exchange works</h2>
+          <p className={styles.eyebrow}>SIMPLE & TRANSPARENT</p>
+          <h2>How Exchange Works</h2>
           <p className={styles.sectionSubtext}>
-            Follow the 5-step conversion pathway to turn your earned Gems into VEs.
+            Convert your earned Gems into VEs in 5 easy steps.
           </p>
         </div>
       </div>
 
       <div className={styles.howCardsRow}>
-        {steps.map((step, index) => {
-          const IconComponent = step.icon;
+        {steps.map((step) => {
           const isFinal = step.isFinal;
 
           return (
             <motion.div
               key={step.number}
               className={`${styles.howCard} ${styles[`howCard_${step.color}`]} ${isFinal ? styles.howCard_final : ""}`}
-              whileHover={{ y: -6, scale: 1.015 }}
-              transition={{ duration: 0.25, ease: "easeOut" }}
+              whileHover={{ y: -4, scale: 1.02 }}
+              transition={{ duration: 0.2, ease: "easeOut" }}
             >
               <div className={styles.howCardAura} />
 
@@ -92,28 +69,9 @@ export default function HowExchangeWorks() {
                 </div>
               </div>
 
-              <div className={styles.howIconStage}>
-                <motion.div
-                  className={`${styles.howIconOrb} ${styles[`howIconOrb_${step.color}`]}`}
-                  animate={{ y: [0, -5, 0] }}
-                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: index * 0.2 }}
-                >
-                  <IconComponent size={22} />
-                </motion.div>
-              </div>
-
               <div className={styles.howCardBody}>
                 <h3>{step.title}</h3>
                 <p>{step.text}</p>
-              </div>
-
-              <div className={styles.howCardFooter}>
-                <div className={styles.howProgressBarTrack}>
-                  <div 
-                    className={`${styles.howProgressBarFill} ${styles[`howProgressBarFill_${step.color}`]}`}
-                    style={{ width: step.progress }}
-                  />
-                </div>
               </div>
             </motion.div>
           );
@@ -122,5 +80,3 @@ export default function HowExchangeWorks() {
     </section>
   );
 }
-
-

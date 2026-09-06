@@ -9,12 +9,15 @@ export default function ExchangeRules() {
       <div className={styles.rulesIcon}>
         <ShieldCheck size={26} />
       </div>
-      <div>
-        <p className={styles.eyebrow}>GOOD TO KNOW</p>
-        <h2>Exchange rules</h2>
-        <ul>
+      <div className={styles.rulesContent}>
+        <p className={styles.eyebrow}>EXCHANGE POLICY</p>
+        <h2>Exchange Rules & Security</h2>
+        <ul className={styles.rulesList}>
           {exchangeRules.map((rule, idx) => (
-            <li key={idx}>{rule}</li>
+            <li key={idx} className={styles.ruleItem}>
+              <span className={styles.ruleBullet}>•</span>
+              <span>{rule}</span>
+            </li>
           ))}
         </ul>
       </div>

@@ -1,6 +1,8 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { FaArrowRight, FaCoins, FaFire, FaShieldHalved, FaAward, FaRocket } from "react-icons/fa6";
+import { FaArrowRight, FaShieldHalved, FaBolt, FaCoins } from "react-icons/fa6";
+import gemImg from "../../assets/images/gem_crystal.png";
+import coinImg from "../../assets/images/ves_coin.png";
 import styles from "../../pages/ExchangeCenter/ExchangeCenter.module.css";
 
 const containerVariants = {
@@ -30,73 +32,55 @@ export default function ExchangeHero() {
           <span /> VELOOP REWARDS VAULT
         </div>
         <h1>Exchange Center</h1>
-        <p className={styles.heroTitle}>Turn your earned Gems into VEs.</p>
+        <p className={styles.heroTitle}>Convert earned Gems into VEs instantly.</p>
         <p className={styles.heroDescription}>
-          Convert your eligible Gems into VEs and continue your reward journey.
-          Simple, transparent, and built strictly around your earned rewards.
+          Select your conversion tier to exchange Gems for VEs virtual rewards with zero fees and immediate wallet credit.
         </p>
 
         <div className={styles.heroPills}>
           <span>
-            <FaShieldHalved size={13} /> Secure conversion
+            <FaBolt size={12} /> Instant Credit
           </span>
           <span>
-            <FaAward size={13} /> Reward focused
+            <FaShieldHalved size={12} /> Zero Network Fee
           </span>
           <span>
-            <FaRocket size={13} /> Instant balance update
+            <FaCoins size={12} /> Live VIP Multipliers
           </span>
         </div>
       </motion.div>
 
       <div className={styles.heroVisual} aria-hidden="true">
-        <div className={styles.heroHalo} />
-
-        <div className={`${styles.rewardVisual} ${styles.rewardVisualLarge}`}>
+        <div className={styles.heroCircleStage}>
           <motion.div
-            className={styles.orbit}
-            animate={{ rotate: 360 }}
-            transition={{ duration: 22, repeat: Infinity, ease: "linear" }}
-          />
-          <motion.div
-            className={styles.gemOrb}
-            animate={{ y: [0, -10, 0], rotate: [0, 5, -5, 0] }}
+            className={styles.heroAssetBox}
+            animate={{ y: [0, -5, 0], rotate: [0, 1, 0] }}
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
           >
-            <FaFire size={38} />
+            <img src={gemImg} alt="Gems" className={styles.heroAssetImg} />
+            <span className={styles.heroAssetLabel}>Gems</span>
           </motion.div>
 
-          <motion.div
-            className={styles.rewardArrow}
-            animate={{ x: [0, 4, 0] }}
-            transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <FaArrowRight size={19} />
-          </motion.div>
+          <div className={styles.heroFlowConduit}>
+            <motion.div
+              className={styles.heroFlowPulse}
+              animate={{ x: [-6, 6, -6], opacity: [0.35, 1, 0.35] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <FaArrowRight size={16} />
+            </motion.div>
+            <span className={styles.heroFlowRate}>Fixed 5.4x</span>
+          </div>
 
           <motion.div
-            className={styles.veOrb}
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+            className={styles.heroAssetBox}
+            animate={{ y: [0, 5, 0], rotate: [0, -1, 0] }}
+            transition={{ duration: 4.2, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
           >
-            <FaCoins size={35} />
+            <img src={coinImg} alt="VEs Coins" className={styles.heroAssetImg} />
+            <span className={styles.heroAssetLabelGold}>VEs Coins</span>
           </motion.div>
         </div>
-
-        <motion.div
-          className={styles.heroFloatingGem}
-          animate={{ y: [0, -12, 0], opacity: [0.4, 0.9, 0.4] }}
-          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-        >
-          ◆
-        </motion.div>
-        <motion.div
-          className={styles.heroFloatingCoin}
-          animate={{ y: [0, 12, 0], opacity: [0.4, 0.9, 0.4] }}
-          transition={{ duration: 3.2, repeat: Infinity, ease: "easeInOut", delay: 0.7 }}
-        >
-          ✦
-        </motion.div>
       </div>
     </motion.section>
   );

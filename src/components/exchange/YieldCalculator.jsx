@@ -1,10 +1,11 @@
 import React, { useState, useMemo } from "react";
-import { motion } from "framer-motion";
-import { FaArrowRight, FaBolt, FaCoins, FaFire, FaSliders } from "react-icons/fa6";
+import { FaBolt, FaSliders } from "react-icons/fa6";
 import { Sparkles } from "lucide-react";
+import gemImg from "../../assets/images/gem_crystal.jpg";
+import coinImg from "../../assets/images/ves_coin.jpg";
 import styles from "../../pages/ExchangeCenter/ExchangeCenter.module.css";
 
-export default function YieldCalculator({ balance, onSelectAmount }) {
+export default function YieldCalculator({ balance }) {
   const [gemInput, setGemInput] = useState(100);
 
   const { estimatedVEs, bonusPercent, tierLabel } = useMemo(() => {
@@ -45,12 +46,12 @@ export default function YieldCalculator({ balance, onSelectAmount }) {
           </div>
           <div>
             <h3>Live Yield Simulator</h3>
-            <p>Slide or simulate any amount to preview real-time VE yield & VIP bonus rates</p>
+            <p>Simulate any gem amount to preview real-time VE returns & VIP multipliers</p>
           </div>
         </div>
 
         <div className={styles.calcRatePill}>
-          <Sparkles size={14} className={styles.sparkleIcon} />
+          <Sparkles size={13} className={styles.sparkleIcon} />
           <span>{tierLabel}</span>
           {bonusPercent > 0 && <span className={styles.calcBonusBadge}>+{bonusPercent}%</span>}
         </div>
@@ -59,9 +60,10 @@ export default function YieldCalculator({ balance, onSelectAmount }) {
       <div className={styles.calcBody}>
         <div className={styles.calcControls}>
           <div className={styles.calcSliderHeader}>
-            <span>Exchange Amount</span>
+            <span className={styles.calcSubtleLabel}>Selected Exchange</span>
             <strong className={styles.calcValueDisplay}>
-              <FaFire className={styles.calcGemColor} /> {gemInput} Gems
+              <img src={gemImg} alt="Gems" className={styles.calcAssetThumb} />
+              <span>{gemInput} Gems</span>
             </strong>
           </div>
 
@@ -73,6 +75,7 @@ export default function YieldCalculator({ balance, onSelectAmount }) {
             value={gemInput}
             onChange={(e) => setGemInput(Number(e.target.value))}
             className={styles.calcSlider}
+            aria-label="Gem exchange amount slider"
           />
 
           <div className={styles.calcPresets}>
@@ -86,12 +89,12 @@ export default function YieldCalculator({ balance, onSelectAmount }) {
         <div className={styles.calcResultBox}>
           <div className={styles.calcResultLabel}>ESTIMATED RETURN</div>
           <div className={styles.calcResultValue}>
-            <FaCoins className={styles.calcVeColor} />
+            <img src={coinImg} alt="VEs" className={styles.calcVeThumb} />
             <strong>{estimatedVEs.toLocaleString()}</strong>
             <span>VEs</span>
           </div>
           <div className={styles.calcResultNote}>
-            Instant balance credit • Zero network fee
+            Instant wallet credit • 0% Fee
           </div>
         </div>
       </div>
