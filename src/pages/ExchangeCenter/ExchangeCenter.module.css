@@ -967,6 +967,19 @@
 .howCardHeader {
   display: flex;
   align-items: center;
+  gap: 8px;
+}
+
+.howStepIconGreen {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #55d6a3, #10b981);
+  color: #0b0f1a;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 2px 8px rgba(85, 214, 163, 0.35);
+  flex-shrink: 0;
 }
 
 .howStepPill {
@@ -1531,9 +1544,48 @@
 .rewardBurst {
   display: flex;
   justify-content: center;
-  gap: 12px;
-  font-size: 18px;
-  margin: 12px 0 18px;
+  gap: 16px;
+  margin: 14px 0 20px;
+}
+
+.burstIconCyan,
+.burstIconPurple,
+.burstIconGold,
+.burstIconYellow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+}
+
+.burstIconCyan {
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  box-shadow: none;
+}
+
+.burstIconPurple {
+  color: #c084fc;
+  background: rgba(192, 132, 252, 0.12);
+  border: 1px solid rgba(192, 132, 252, 0.25);
+  box-shadow: none;
+}
+
+.burstIconGold {
+  color: #f7c96b;
+  background: rgba(247, 201, 107, 0.12);
+  border: 1px solid rgba(247, 201, 107, 0.25);
+  box-shadow: none;
+}
+
+.burstIconYellow {
+  color: #facc15;
+  background: rgba(250, 204, 21, 0.12);
+  border: 1px solid rgba(250, 204, 21, 0.25);
+  box-shadow: none;
 }
 
 /* Info Modal Rows */

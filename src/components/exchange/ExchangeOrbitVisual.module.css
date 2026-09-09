@@ -1,0 +1,299 @@
+.orbitContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  overflow: visible;
+}
+
+/* Size Variants */
+.hero {
+  width: 320px;
+  height: 220px;
+}
+
+.modal {
+  width: 280px;
+  height: 180px;
+  margin: 0 auto;
+}
+
+.card {
+  width: 100%;
+  max-width: 240px;
+  height: 120px;
+}
+
+/* Background Ambient Glow */
+.ambientGlow {
+  position: absolute;
+  inset: 15%;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(168, 85, 247, 0.18) 0%,
+    rgba(56, 189, 248, 0.08) 45%,
+    rgba(247, 201, 107, 0.06) 70%,
+    transparent 85%
+  );
+  filter: blur(28px);
+  pointer-events: none;
+}
+
+/* SVG Orbit Lines */
+.orbitSvg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+
+/* Continuous Rotations & Slow Smooth Flow */
+.spinClockwise {
+  transform-origin: 160px 110px;
+  animation: rotateClockwise 60s linear infinite;
+}
+
+.spinCounterClockwise {
+  transform-origin: 160px 110px;
+  animation: gentleDrift 16s ease-in-out infinite alternate;
+}
+
+@keyframes gentleDrift {
+  from {
+    transform: rotate(-2deg);
+  }
+  to {
+    transform: rotate(2deg);
+  }
+}
+
+@keyframes rotateClockwise {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.dashPulse {
+  animation: dashMoveSlow 50s linear infinite;
+}
+
+@keyframes dashMoveSlow {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: -200;
+  }
+}
+
+/* Sparkles & Diamonds matching the screenshot */
+.sparkleDiamond {
+  position: absolute;
+  top: 24%;
+  left: 12%;
+  color: #c084fc;
+  font-size: 13px;
+  line-height: 1;
+  text-shadow: 0 0 10px rgba(192, 132, 252, 0.85);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.sparkleStar {
+  position: absolute;
+  bottom: 22%;
+  right: 12%;
+  color: #f7c96b;
+  font-size: 15px;
+  line-height: 1;
+  text-shadow: 0 0 10px rgba(247, 201, 107, 0.85);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Orbit Content */
+.orbitContent {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 36px;
+}
+
+.hero .orbitContent {
+  gap: 42px;
+}
+
+.modal .orbitContent {
+  gap: 32px;
+}
+
+.card .orbitContent {
+  gap: 20px;
+}
+
+/* Base Styles */
+.assetSquirclePurple,
+.assetSquircleGold {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero .assetSquirclePurple,
+.hero .assetSquircleGold {
+  width: 78px;
+  height: 78px;
+  padding: 4px;
+}
+
+.modal .assetSquirclePurple,
+.modal .assetSquircleGold {
+  width: 68px;
+  height: 68px;
+  padding: 4px;
+}
+
+.card .assetSquirclePurple,
+.card .assetSquircleGold {
+  width: 52px;
+  height: 52px;
+  padding: 2px;
+}
+
+/* Purple Theme Wrapper (Left Flame / Gem) */
+.assetSquirclePurple {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+/* Gold Theme Wrapper (Right Coins) */
+.assetSquircleGold {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+/* Asset Images */
+.assetImg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: transparent;
+  border: none !important;
+  box-shadow: none !important;
+  mix-blend-mode: screen;
+  filter: none !important;
+}
+
+/* Flow Arrow Conduit */
+.flowArrowConduit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  z-index: 4;
+}
+
+.flowArrow {
+  color: #e2e8f0;
+  display: grid;
+  place-items: center;
+  filter: drop-shadow(0 0 8px rgba(114, 185, 255, 0.6));
+}
+
+.arrowRateText {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  color: #94a3b8;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+/* Asset Labels under Squircles */
+.assetLabelPurple,
+.assetLabelGold {
+  position: absolute;
+  bottom: -22px;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.assetLabelPurple {
+  color: #e9d5ff;
+}
+
+.assetLabelGold {
+  color: #fef08a;
+}
+
+/* Responsive Scaling */
+@media (max-width: 768px) {
+  .hero {
+    width: 270px;
+    height: 190px;
+  }
+
+  .hero .assetSquirclePurple,
+  .hero .assetSquircleGold {
+    width: 66px;
+    height: 66px;
+  }
+
+  .sparkleDiamond {
+    left: 8%;
+    top: 20%;
+  }
+
+  .sparkleStar {
+    right: 8%;
+    bottom: 20%;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    width: 240px;
+    height: 170px;
+  }
+
+  .hero .assetSquirclePurple,
+  .hero .assetSquircleGold {
+    width: 58px;
+    height: 58px;
+    border-radius: 16px;
+  }
+
+  .modal {
+    width: 240px;
+    height: 160px;
+  }
+
+  .modal .assetSquirclePurple,
+  .modal .assetSquircleGold {
+    width: 56px;
+    height: 56px;
+  }
+}

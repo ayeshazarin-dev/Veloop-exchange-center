@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { FaArrowRight, FaSpinner, FaVault, FaXmark } from "react-icons/fa6";
-import gemImg from "../../assets/images/gem_crystal.png";
-import coinImg from "../../assets/images/ves_coin.png";
+import { FaSpinner, FaVault, FaXmark } from "react-icons/fa6";
+import ExchangeOrbitVisual from "./ExchangeOrbitVisual";
 import styles from "../../pages/ExchangeCenter/ExchangeCenter.module.css";
 
 export default function ExchangeModal({ option, balance, onClose, onConfirm }) {
@@ -66,26 +65,9 @@ export default function ExchangeModal({ option, balance, onClose, onConfirm }) {
           Review your conversion details below before completing this transaction.
         </p>
 
-        <div className={styles.confirmFlow}>
-          <div className={styles.confirmFlowItem}>
-            <div className={styles.confirmAssetAvatarWrap}>
-              <img src={gemImg} alt="Gems" className={styles.confirmAssetImg} />
-            </div>
-            <span className={styles.confirmFlowLabel}>You Pay</span>
-            <strong>{option.requiredGems} Gems</strong>
-          </div>
-
-          <div className={styles.confirmFlowDivider}>
-            <FaArrowRight size={16} />
-          </div>
-
-          <div className={styles.confirmFlowItem}>
-            <div className={styles.confirmAssetAvatarWrapGold}>
-              <img src={coinImg} alt="VEs" className={styles.confirmAssetImg} />
-            </div>
-            <span className={styles.confirmFlowLabelGold}>You Receive</span>
-            <strong className={styles.confirmGoldText}>+{option.receiveVEs} VEs</strong>
-          </div>
+        {/* Orbit Visual Showcase matching screenshot */}
+        <div style={{ margin: "10px 0 16px" }}>
+          <ExchangeOrbitVisual size="modal" />
         </div>
 
         <div className={styles.afterBox}>

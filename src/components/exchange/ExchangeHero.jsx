@@ -1,8 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { FaArrowRight, FaShieldHalved, FaBolt, FaCoins } from "react-icons/fa6";
-import gemImg from "../../assets/images/gem_crystal.png";
-import coinImg from "../../assets/images/ves_coin.png";
+import { FaShieldHalved, FaBolt, FaCoins } from "react-icons/fa6";
+import ExchangeOrbitVisual from "./ExchangeOrbitVisual";
 import styles from "../../pages/ExchangeCenter/ExchangeCenter.module.css";
 
 const containerVariants = {
@@ -51,36 +50,7 @@ export default function ExchangeHero() {
       </motion.div>
 
       <div className={styles.heroVisual} aria-hidden="true">
-        <div className={styles.heroCircleStage}>
-          <motion.div
-            className={styles.heroAssetBox}
-            animate={{ y: [0, -5, 0], rotate: [0, 1, 0] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <img src={gemImg} alt="Gems" className={styles.heroAssetImg} />
-            <span className={styles.heroAssetLabel}>Gems</span>
-          </motion.div>
-
-          <div className={styles.heroFlowConduit}>
-            <motion.div
-              className={styles.heroFlowPulse}
-              animate={{ x: [-6, 6, -6], opacity: [0.35, 1, 0.35] }}
-              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            >
-              <FaArrowRight size={16} />
-            </motion.div>
-            <span className={styles.heroFlowRate}>Fixed 5.4x</span>
-          </div>
-
-          <motion.div
-            className={styles.heroAssetBox}
-            animate={{ y: [0, 5, 0], rotate: [0, -1, 0] }}
-            transition={{ duration: 4.2, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
-          >
-            <img src={coinImg} alt="VEs Coins" className={styles.heroAssetImg} />
-            <span className={styles.heroAssetLabelGold}>VEs Coins</span>
-          </motion.div>
-        </div>
+        <ExchangeOrbitVisual size="hero" />
       </div>
     </motion.section>
   );

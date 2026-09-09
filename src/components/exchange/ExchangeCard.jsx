@@ -4,6 +4,7 @@ import { FaArrowRight, FaChevronRight, FaBolt } from "react-icons/fa6";
 import { Sparkles } from "lucide-react";
 import gemImg from "../../assets/images/gem_crystal.png";
 import coinImg from "../../assets/images/ves_coin.png";
+import ExchangeOrbitVisual from "./ExchangeOrbitVisual";
 import styles from "../../pages/ExchangeCenter/ExchangeCenter.module.css";
 
 export default function ExchangeCard({ option, balance, onConvert, onEarnGems }) {
@@ -39,23 +40,7 @@ export default function ExchangeCard({ option, balance, onConvert, onEarnGems })
       </div>
 
       <div className={styles.cardVisual} aria-hidden="true">
-        <div className={styles.cardAssetShowcase}>
-          <div className={styles.cardAssetCluster}>
-            <div className={styles.cardAssetGemWrapper}>
-              <img src={gemImg} alt="Gems" className={styles.cardGemImg} />
-            </div>
-
-            <div className={styles.cardAssetFlowConnector}>
-              <div className={styles.cardFlowArrow}>
-                <FaArrowRight size={14} />
-              </div>
-            </div>
-
-            <div className={styles.cardAssetCoinWrapper}>
-              <img src={coinImg} alt="VEs Coins" className={styles.cardCoinImg} />
-            </div>
-          </div>
-        </div>
+        <ExchangeOrbitVisual size="card" />
       </div>
 
       <div className={styles.cardContent}>

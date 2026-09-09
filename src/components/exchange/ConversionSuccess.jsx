@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { motion } from "framer-motion";
-import { Check } from "lucide-react";
+import { Check, Sparkles, Gem, Coins, Zap } from "lucide-react";
 import coinImg from "../../assets/images/ves_coin.png";
 import styles from "../../pages/ExchangeCenter/ExchangeCenter.module.css";
 
@@ -53,10 +53,34 @@ export default function ConversionSuccess({ option, onContinue }) {
         </p>
 
         <div className={styles.rewardBurst} aria-hidden="true">
-          <motion.span animate={{ scale: [1, 1.4, 1], opacity: [0.5, 1, 0.5] }} transition={{ duration: 1.5, repeat: Infinity }}>✨</motion.span>
-          <motion.span animate={{ scale: [1, 1.4, 1], opacity: [0.5, 1, 0.5] }} transition={{ duration: 1.5, repeat: Infinity, delay: 0.3 }}>💎</motion.span>
-          <motion.span animate={{ scale: [1, 1.4, 1], opacity: [0.5, 1, 0.5] }} transition={{ duration: 1.5, repeat: Infinity, delay: 0.6 }}>🪙</motion.span>
-          <motion.span animate={{ scale: [1, 1.4, 1], opacity: [0.5, 1, 0.5] }} transition={{ duration: 1.5, repeat: Infinity, delay: 0.9 }}>⚡</motion.span>
+          <motion.span
+            className={styles.burstIconCyan}
+            animate={{ y: [0, -5, 0], scale: [1, 1.08, 1], opacity: [0.85, 1, 0.85] }}
+            transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <Sparkles size={20} />
+          </motion.span>
+          <motion.span
+            className={styles.burstIconPurple}
+            animate={{ y: [0, -5, 0], scale: [1, 1.08, 1], opacity: [0.85, 1, 0.85] }}
+            transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 0.4 }}
+          >
+            <Gem size={20} />
+          </motion.span>
+          <motion.span
+            className={styles.burstIconGold}
+            animate={{ y: [0, -5, 0], scale: [1, 1.08, 1], opacity: [0.85, 1, 0.85] }}
+            transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
+          >
+            <Coins size={20} />
+          </motion.span>
+          <motion.span
+            className={styles.burstIconYellow}
+            animate={{ y: [0, -5, 0], scale: [1, 1.08, 1], opacity: [0.85, 1, 0.85] }}
+            transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 1.2 }}
+          >
+            <Zap size={20} />
+          </motion.span>
         </div>
 
         <button className={styles.confirmButton} onClick={onContinue}>
